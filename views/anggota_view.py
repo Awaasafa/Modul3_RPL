@@ -2,18 +2,16 @@
 import customtkinter as ctk
 from tkinter import ttk
 
-# Set tampilan ke mode terang (putih)
-ctk.set_appearance_mode("light")
-
 class AnggotaView(ctk.CTk):
     def __init__(self):
         super().__init__()
+        ctk.set_appearance_mode("light")
         self.title("Sistem Manajemen Perpustakaan - Data Anggota")
         self.geometry("800x450")
 
         # Grid Utama
-        self.grid_columnconfigure(0, weight=1)
-        self.grid_columnconfigure(1, weight=2)
+        self.grid_columnconfigure(0, weight=1) # kolom kiri form
+        self.grid_columnconfigure(1, weight=2) # kolom kanan tabel lebih lebar
         self.grid_rowconfigure(0, weight=1)
 
         # FRAME KIRI: FORM INPUT ANGGOTA
@@ -22,6 +20,7 @@ class AnggotaView(ctk.CTk):
 
         ctk.CTkLabel(self.frame_kiri, text="Form Data Anggota", font=("Arial", 16, "bold")).pack(pady=15)
 
+        # Komponen Input
         self.entry_nama = ctk.CTkEntry(self.frame_kiri, placeholder_text="Masukkan Nama Anggota")
         self.entry_nama.pack(pady=10, padx=15, fill="x")
 
@@ -44,19 +43,23 @@ class AnggotaView(ctk.CTk):
 
         ctk.CTkLabel(self.frame_kanan, text="Daftar Anggota Perpustakaan", font=("Arial", 16, "bold")).pack(pady=15)
 
+        # Komponen Tabel (Treeview dari tkinter standar)
         kolom = ("id", "nama", "alamat")
         self.tabel = ttk.Treeview(self.frame_kanan, columns=kolom, show="headings", height=15)
 
+        # Konfigurasi Header Tabel
         self.tabel.heading("id", text="ID")
         self.tabel.heading("nama", text="Nama Anggota")
         self.tabel.heading("alamat", text="Alamat")
 
+        # Konfigurasi Lebar Kolom
         self.tabel.column("id", width=40, anchor="center")
         self.tabel.column("nama", width=150)
         self.tabel.column("alamat", width=200)
 
         self.tabel.pack(fill="both", expand=True, padx=15, pady=10)
 
+# Blok eksekusi untuk menguji tampilan GUI secara langsung
 if __name__ == "__main__":
     app = AnggotaView()
     app.mainloop()
