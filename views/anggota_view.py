@@ -7,12 +7,12 @@ class AnggotaView(ctk.CTk):
         super().__init__()
         ctk.set_appearance_mode("light")
         self.title("Sistem Manajemen Perpustakaan - Data Anggota")
-        self.geometry("800x450")
+        self.geometry("800x450") 
 
         # Grid Utama
-        self.grid_columnconfigure(0, weight=1) # kolom kiri form
-        self.grid_columnconfigure(1, weight=2) # kolom kanan tabel lebih lebar
-        self.grid_rowconfigure(0, weight=1)
+        self.grid_columnconfigure(0, weight=1) 
+        self.grid_columnconfigure(1, weight=2) 
+        self.grid_rowconfigure(0, weight=1)  
 
         # FRAME KIRI: FORM INPUT ANGGOTA
         self.frame_kiri = ctk.CTkFrame(self)
@@ -20,14 +20,13 @@ class AnggotaView(ctk.CTk):
 
         ctk.CTkLabel(self.frame_kiri, text="Form Data Anggota", font=("Arial", 16, "bold")).pack(pady=15)
 
-        # Komponen Input
         self.entry_nama = ctk.CTkEntry(self.frame_kiri, placeholder_text="Masukkan Nama Anggota")
         self.entry_nama.pack(pady=10, padx=15, fill="x")
 
         self.entry_alamat = ctk.CTkEntry(self.frame_kiri, placeholder_text="Masukkan Alamat")
         self.entry_alamat.pack(pady=10, padx=15, fill="x")
 
-        # Tombol Aksi
+        
         self.btn_simpan = ctk.CTkButton(self.frame_kiri, text="Simpan Data", fg_color="green")
         self.btn_simpan.pack(pady=10, padx=15, fill="x")
 
@@ -43,7 +42,6 @@ class AnggotaView(ctk.CTk):
 
         ctk.CTkLabel(self.frame_kanan, text="Daftar Anggota Perpustakaan", font=("Arial", 16, "bold")).pack(pady=15)
 
-        # Komponen Tabel (Treeview dari tkinter standar)
         kolom = ("id", "nama", "alamat")
         self.tabel = ttk.Treeview(self.frame_kanan, columns=kolom, show="headings", height=15)
 
@@ -59,7 +57,6 @@ class AnggotaView(ctk.CTk):
 
         self.tabel.pack(fill="both", expand=True, padx=15, pady=10)
 
-# Blok eksekusi untuk menguji tampilan GUI secara langsung
 if __name__ == "__main__":
     app = AnggotaView()
     app.mainloop()

@@ -12,7 +12,7 @@ class Database:
 
     def get_connection(self):
         try:
-            self.conn = mysql.connector.connect(
+            self.conn = _mysql_connector.connect(
                 host=self.host,
                 database=self.db_name,
                 user=self.username,
