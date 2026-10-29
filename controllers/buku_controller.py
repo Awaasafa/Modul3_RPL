@@ -18,9 +18,6 @@ class BukuController:
         self.view.btn_delete.configure(command=self.hapus_data)
         self.view.btn_update.configure(command=self.perbarui_data)
         
-        # Tambahan Tombol Logout (Sesuai tugas Modul VII)
-        if hasattr(self.view, 'btn_logout'):
-            self.view.btn_logout.configure(command=self.logout)
 
         # Penerapan Otorisasi Berbasis Peran (RBAC)
         if self.user_role == "anggota":
